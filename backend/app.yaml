@@ -1,0 +1,13 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+# env_variables: 
+#   GAE_USE_SUBPROCESS: 0
+
+handlers:
+- url: /.*
+  script: routes.app
+
+libraries:
+- name: webapp2
+  version: latest
