@@ -13,19 +13,19 @@ const Search = () => {
     const handleClick = (element) => {
         console.log(navigate);
         navigate(`/apps/${element.apppackage}`);
-        console.log(element);
+        // console.log(element);
     }
 
     const getAppsWithAxios = async () => {
         const response = await axios.get('http://localhost:8080/apps/');
         setData(response.data);
-        console.log(response.data);
+        // console.log(response.data);
     };
     
     const handleScraping = ()=> {
         axios.post('http://localhost:8080/apps/')
         .then(res => {
-            console.log(res)
+            // console.log(res)
         })
     }
 

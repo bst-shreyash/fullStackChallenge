@@ -6,16 +6,19 @@ import axios from "axios";
 import AppScreen from "./AppScreen";
 
 const AppDetail = () => {
-    useEffect(() => {
-        getAppWithAxios();
-    }, []);
+    
     let { id } = useParams();
-    const [data, setData] = useState([{}]);
+    const [data, setData] = useState({});
     const getAppWithAxios = async () => {
         const response = await axios.get(`http://localhost:8080/apps/?app_id=${id}`);
         setData((response.data)[0]);
-        console.log(data);
     };
+
+    useEffect(() => {
+        getAppWithAxios();
+    }, []);
+
+    if (!Object.keys(data).length) return <div>Loading.....</div>
 
     return (
         <>
@@ -48,7 +51,7 @@ const AppDetail = () => {
             </div>
                 <div className="row mt-2 d-flex justify-content-around align-items-center">
                     <h3>App Screenshots</h3>
-                    {/* <AppScreen data={data.screenshots}/> */}
+                    <AppScreen data={data.screenshots}/>
                 </div>
             </div>
         </>
